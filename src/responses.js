@@ -3,21 +3,21 @@ const respondJSON = (request, response, status, message, id = null) => {
   const responseJSON = id ? { message, id } : { message };
   const responseBody = JSON.stringify(responseJSON);
 
-  response.writeHead(status, { 
+  response.writeHead(status, {
     'Content-Type': 'application/json',
-    'Content-Length': Buffer.byteLength(responseBody) // legtnth
+    'Content-Length': Buffer.byteLength(responseBody), // legtnth
   });
   response.write(responseBody);
-  response.end(); 
+  response.end();
 };
 
 // HEAD response
 const respondHead = (response, status) => {
-  response.writeHead(status, { 
+  response.writeHead(status, {
     'Content-Type': 'application/json',
-    'Content-Length': 0 // HEAD has no body
+    'Content-Length': 0, // HEAD has no body
   });
-  response.end(); //end
+  response.end(); // end
 };
 
 // 404 Accept header
@@ -27,11 +27,11 @@ const respondNotFound = (request, response) => {
 
   if (wantsJSON) {
     respondJSON(request, response, 404, '404 Not Found', 'notFound');
-  } else {//plain text
+  } else { // plain text
     const responseBody = '404 Not Found';
-    response.writeHead(404, { 
+    response.writeHead(404, {
       'Content-Type': 'text/plain',
-      'Content-Length': Buffer.byteLength(responseBody) // handle content length
+      'Content-Length': Buffer.byteLength(responseBody), // handle content length
     });
     response.write(responseBody);
     response.end();
