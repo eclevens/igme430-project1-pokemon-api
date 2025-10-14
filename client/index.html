@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Pokedex Viewer</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Pokedex</h1>
+        <nav>
+            <a href="/documentation" id="docs-link">API Documentation</a>
+        </nav>
+        <hr>
+    </header>
+
+    <section>
+        <h2>Filter Pokemon</h2>
+        <!--Filters section-->
+        <form id="filter-form">
+            <label>Type: <input type="text" id="type" placeholder="Fire" /></label>
+            <label>Weakness: <input type="text" id="weakness" placeholder="Water" /></label>
+            <button type="submit">Filter</button> <!--submit-->
+            <button type="button" id="reset">Reset</button> <!--reset-->
+        </form>
+    </section>
+
+    <section>
+        <!--List section-->
+        <h2>Pokemon List</h2>
+        <table id="pokemon-table" border="1"> <!--use html table for displaying pokemon-->
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Weaknesses</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            <tbody></tbody> <!--body-->
+        </table>
+    </section>
+
+    <section>
+        <!--Add pokemon section-->
+        <h2>Add Pokemon</h2>
+        <form id="add-form">
+            <input id="add-id" placeholder="ID" required />
+            <input id="add-name" placeholder="Name" required />
+            <input id="add-type" placeholder="Type(s)" />
+            <input id="add-weaknesses" placeholder="Weakness(es)" />
+            <input id="add-height" placeholder="Height" />
+            <input id="add-weight" placeholder="Weight" />
+            <button type="submit">Add</button>
+        </form>
+    </section>
+
+    <section>
+            <!--Edit pokemon section-->
+        <h2>Edit Pokemon</h2>
+        <form id="edit-form">
+            <input id="edit-id" placeholder="ID" required />
+            <input id="edit-name" placeholder="Name" required />
+            <input id="edit-type" placeholder="Type(s)" />
+            <input id="edit-weaknesses" placeholder="Weakness(es)" />
+            <input id="edit-height" placeholder="Height" />
+            <input id="edit-weight" placeholder="Weight" />
+            <button type="submit">Edit</button>
+        </form>
+    </section>
+
+    <script src="client.js"></script>    <!--link js-->
+</body>
+
+</html>

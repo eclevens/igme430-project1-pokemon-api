@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Pokedex API Documentation</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            max-width: 800px;
+            margin: 40px auto;
+            line-height: 1.6;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        a {
+            color: #0077cc;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #back {
+            background-color: #d1e5f4;
+            color: #333;
+            padding: 6px 12px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Pokedex API Documentation</h1>
+        <a href="/" id="back">Back to Client Page</a>
+    </header>
+
+    <h2>Overview</h2>
+    <p>The Pokedex API lets users view, filter, add, and edit Pokemon data. It serves JSON responses.</p>
+
+    <h2>Endpoints</h2>
+
+    <h3>1. GET /getPokemon</h3>
+    <p><strong>Methods:</strong> GET, HEAD</p>
+    <p>Returns all Pokemon. Optional query parameters allow for type and weakness filtering.</p>
+    <h4>Query Parameters</h4>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td>string</td>
+            <td>optional</td>
+            <td>Filter by Pokemon type</td>
+        </tr>
+        <tr>
+            <td>weakness</td>
+            <td>string</td>
+            <td>optional</td>
+            <td>Filter by Pokemon weakness</td>
+        </tr>
+    </table>
+    <h4>Example Request</h4>
+    <pre><code>GET /getPokemon?type=Fire&weakness=Water</code></pre>
+    <h4>Example Response (200 OK)</h4>
+    <pre><code>{
+  "pokemon": [
+    {
+      "id": "004",
+      "name": "Charmander",
+      "type": ["Fire"],
+      "weaknesses": ["Water","Ground"],
+      "height": "0.6 m",
+      "weight": "8.5 kg"
+    }
+  ]
+}</code></pre>
+
+    <h3>2. POST /addPokemon</h3>
+    <p><strong>Methods:</strong> POST</p>
+    <p>Adds a new Pokemon. JSON body is required.</p>
+    <h4>Body Parameters</h4>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td>string</td>
+            <td>yes</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>yes</td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td>array of strings</td>
+            <td>no</td>
+        </tr>
+        <tr>
+            <td>weaknesses</td>
+            <td>array of strings</td>
+            <td>no</td>
+        </tr>
+        <tr>
+            <td>height</td>
+            <td>string</td>
+            <td>no</td>
+        </tr>
+        <tr>
+            <td>weight</td>
+            <td>string</td>
+            <td>no</td>
+        </tr>
+    </table>
+    <h4>Example Request</h4>
+    <pre><code>POST /addPokemon
+Content-Type: application/json
+
+{
+  "id": "004",
+  "name": "Charmander",
+  "type": ["Fire"],
+  "weaknesses": ["Water","Ground"],
+  "height": "0.6 m",
+  "weight": "8.5 kg"
+}</code></pre>
+    <h4>Example Response (201 Created)</h4>
+    <pre><code>{
+  "message": "Created Successfully",
+  "pokemon": {
+    "id": "004",
+    "name": "Charmander",
+    "type": ["Fire"],
+    "weaknesses": ["Water","Ground"],
+    "height": "0.6 m",
+    "weight": "8.5 kg"
+  }
+}</code></pre>
+
+    <h3>3. PUT /editPokemon</h3>
+    <p><strong>Methods:</strong> PUT</p>
+    <p>Updates an existing Pokemon by ID. JSON body required.</p>
+    <h4>Body Parameters</h4>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Required</th>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td>string</td>
+            <td>yes</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>string</td>
+            <td>yes</td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td>array of strings</td>
+            <td>no</td>
+        </tr>
+        <tr>
+            <td>weaknesses</td>
+            <td>array of strings</td>
+            <td>no</td>
+        </tr>
+        <tr>
+            <td>height</td>
+            <td>string</td>
+            <td>no</td>
+        </tr>
+        <tr>
+            <td>weight</td>
+            <td>string</td>
+            <td>no</td>
+        </tr>
+    </table>
+    <h4>Example Request</h4>
+    <pre><code>PUT /editPokemon
+Content-Type: application/json
+
+{
+  "id": "004",
+  "name": "Charmeleon",
+  "type": ["Fire"],
+  "weaknesses": ["Water","Ground"],
+  "height": "1.1 m",
+  "weight": "19.0 kg"
+}</code></pre>
+    <h4>Example Response (200 OK)</h4>
+    <pre><code>{
+  "message": "Updated Successfully",
+  "pokemon": {
+    "id": "004",
+    "name": "Charmeleon",
+    "type": ["Fire"],
+    "weaknesses": ["Water","Ground"],
+    "height": "1.1 m",
+    "weight": "19.0 kg"
+  }
+}</code></pre>
+
+    <h3>4. HEAD /getPokemon</h3>
+    <p><strong>Methods:</strong> HEAD</p>
+    <p>Returns metadata headers only. No body content.</p>
+
+    <h3>5. Invalid Endpoints</h3>
+    <p>Any unknown route returns <code>404 Not Found</code>.</p>
+    <pre><code>{
+  "message": "The page you are looking for was not found."
+}</code></pre>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 2rem;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+form {
+    margin: 1rem 0;
+}
+
+label {
+    display: inline-block;
+    width: 20%;
+}
+
+input {
+    margin-bottom: 0.5rem;
+}
+
+button {
+    margin: 0.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: .5rem;
+}
+
+th {
+    background-color: #d1e5f4;
+}
+
+#docs-link {
+    display: inline-block;
+    background-color: #d1e5f4;
+    color: #333;
+    padding: 8px 14px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#docs-link:hover {
+    background-color: #333;
+    color: #d1e5f4;
+}
